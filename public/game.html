@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة فك الشيفرة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <img src="club-logo.png" alt="لوجو النادي">
+    <div class="title">لعبة فك الشيفرة</div>
+    <img src="university-logo.png" alt="لوجو الجامعة">
+  </div>
+
+  <div class="container">
+    <div id="waitingRoom" style="text-align: center; padding: 50px;">
+      <h1>بانتظار بدء اللعبة...</h1>
+    </div>
+    <div id="hostControls" style="display: none; text-align: center; margin: 20px 0;">
+      <button onclick="startGame()">بدء اللعبة</button>
+    </div>
+    <div id="gameInterface" style="display: none;">
+      <h2 id="welcome">مرحبًا، لاعب!</h2>
+      <div class="box">
+        <strong>الشفرة:</strong>
+        <p id="code-box">سيتم عرض الشفرة هنا...</p>
+      </div>
+      <div class="box">
+        <strong>الإجابة النهائية:</strong>
+        <input type="text" id="answer" placeholder="أدخل الإجابة هنا...">
+        <button onclick="submitAnswer()">إرسال الإجابة</button>
+      </div>
+      <div class="box">
+        <strong>تلميحك:</strong>
+        <p id="hint-box">سيتم عرض التلميح هنا...</p>
+      </div>
+      <div class="box chat-box" id="chat-box"></div>
+      <input type="text" id="message" placeholder="أكتب رسالتك...">
+      <button onclick="sendMessage()">إرسال الرسالة</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    const playerName = localStorage.getItem('playerName');
+    if (!playerName) {
+      window.location.href = '/index.html';
+    } else {
+      document.getElementById('welcome').textContent = `مرحبًا، ${playerName}!`;
+      socket.emit('register', playerName);
+    }
+
+    socket.on('setHost', () => {
+      document.getElementById('hostControls').style.display = 'block';
+    });
+
+    function startGame() {
+      socket.emit('startGame');
+    }
+
+    socket.on('gameStarted', () => {
+      document.getElementById('waitingRoom').style.display = 'none';
+      document.getElementById('gameInterface').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

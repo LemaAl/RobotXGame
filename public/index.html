@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل اللاعب</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <img src="club-logo.png" alt="لوجو النادي">
+    <div class="title">لعبة فك الشيفرة</div>
+    <img src="university-logo.png" alt="لوجو الجامعة">
+  </div>
+
+  <div class="container">
+    <h1>تسجيل الدخول</h1>
+    <input type="text" id="playerName" placeholder="أدخل اسمك...">
+    <button onclick="register()">ابدأ اللعب</button>
+  </div>
+
+  <script>
+    function register() {
+      const playerName = document.getElementById('playerName').value;
+      if (!playerName.trim()) {
+        alert('الرجاء إدخال اسمك!');
+        return;
+      }
+      localStorage.setItem('playerName', playerName);
+      window.location.href = '/game.html';
+    }
+  </script>
+</body>
+</html>
