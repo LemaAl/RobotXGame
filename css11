@@ -1,0 +1,49 @@
+/* ملف style.css */
+body {
+  background-color: #282c34;
+  color: white;
+  font-family: 'Changa One', cursive;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+#game-container {
+  position: relative;
+  width: 80%;
+  height: 500px;
+  margin: 20px auto;
+  border: 5px solid #61dafb;
+  border-radius: 15px;
+  background-color: #1c2025;
+}
+
+button {
+  background-color: #61dafb;
+  color: black;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #21a1f1;
+}
+
+#messages {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.player-info {
+  font-size: 1.2rem;
+  color: #61dafb;
+}
