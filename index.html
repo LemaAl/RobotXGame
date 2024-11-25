@@ -1,0 +1,87 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة Robotx</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- شريط التنقل -->
+  <div class="navbar">
+    <img src="robotex_logo.jpg" alt="لوجو النادي" class="club-logo">
+    <div class="title">لعبة Robotx</div>
+    <img src="university_logo.jpg" alt="لوجو الجامعة" class="university-logo">
+  </div>
+
+  <!-- واجهة تسجيل الدخول -->
+  <div class="login-container">
+    <form onsubmit="registerPlayer(); return false;">
+      <h1>أدخل بياناتك للبدء</h1>
+      <input type="text" id="playerName" placeholder="اسم اللاعب..." required>
+      <select id="teamSelect">
+        <option value="team1">فريق 1</option>
+        <option value="team2">فريق 2</option>
+        <option value="team3">فريق 3</option>
+      </select>
+      <button type="submit">انضم للعبة</button>
+    </form>
+  </div>
+
+  <!-- شاشة الشات -->
+  <div id="chatRoom" style="display: none;">
+    <h2>غرفة الدردشة للفريق</h2>
+    <div id="messages"></div>
+    <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا...">
+    <button onclick="sendMessage()">إرسال</button>
+  </div>
+
+  <script src="script.js"></script>
+
+
+
+
+
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة التحدي - فريق RobotX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+  <div class="navbar">
+    <img src="robotx_logo.jpg" alt="لوجو النادي" class="club-logo">
+    <div class="title">لعبة RobotX</div>
+    <img src="university_logo.jpg" alt="لوجو الجامعة" class="university-logo">
+  </div>
+
+  <div class="game-container">
+    <div id="team-hints">
+      <h2>التلميحات:</h2>
+      <ul>
+        <li id="hint1">...</li>
+        <li id="hint2">...</li>
+        <li id="hint3">...</li>
+      </ul>
+    </div>
+
+    <div id="answer-section">
+      <h3>الإجابة:</h3>
+      <input type="text" id="answer-input" placeholder="اكتب إجابتك هنا...">
+      <button onclick="submitAnswer()">إرسال</button>
+    </div>
+
+    <div id="winner-section" style="display:none;">
+      <h2 id="winner-message"></h2>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

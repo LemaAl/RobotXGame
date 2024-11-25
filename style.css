@@ -1,0 +1,242 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #74c0ef, #54b0ec);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-bottom: 2px solid #0072ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar img {
+  height: 50px;
+}
+
+.navbar .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0072ff;
+}
+
+/* Game Container */
+.game-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#team-hints h2 {
+  color: #0072ff;
+  margin-bottom: 20px;
+}
+
+#team-hints ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#team-hints li {
+  background-color: #f0f8ff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  color: #333;
+  border-left: 5px solid #0072ff;
+}
+
+#answer-section {
+  margin-top: 30px;
+}
+
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#winner-section {
+  margin-top: 20px;
+  color: green;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Background Styling */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #d4f1f9, #b4e0f5, #94d0f2, #74c0ef, #54b0ec);
+    background-image: url("background.jpg");
+    background-size: cover;
+    padding: 20px; /* Extra padding for smaller screens */
+}
+
+/* Container Styling */
+.login-container {
+    margin-top: 150px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px; /* Responsive max width */
+}
+
+/* Title Styling */
+.login-container h1 {
+    color: #0072ff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Input Field Styling */
+.login-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #5f597c9c;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+.login-container input[type="text"]:focus {
+    border-color: #0072ff; /* Highlighted border on focus */
+    box-shadow: 0 0 5px rgba(0, 114, 255, 0.5); /* Soft glow effect */
+}
+
+/* Button Styling */
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background: #0072ff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-container button:hover {
+    background: #0056b3;
+    transform: translateY(-2px); /* Slight hover lift effect */
+}
+
+.login-container button:active {
+    transform: translateY(0); /* Reset when clicked */
+    background: #003f7f; /* Darker color on click */
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* يوزع العناصر بين الجانبين */
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9); /* خلفية شفافة */
+    padding: 10px 20px; /* مساحة داخلية للحاوية */
+    border-bottom: 2px solid #0072ff; /* خط سفلي */
+    position: absolute; /* يضع الشريط في الأعلى */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* يضمن ظهوره فوق العناصر الأخرى */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* تأثير الظل */
+}
+
+/* Logo Styling */
+.navbar img {
+    height: 50px; /* التحكم في حجم اللوجو */
+    width: auto;
+}
+
+.navbar .club-logo {
+    margin-right: 10px; /* مسافة من النص */
+}
+
+.navbar .university-logo {
+    margin-left: 10px; /* مسافة من النص */
+}
+
+/* Title Styling */
+.navbar .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0072ff;
+    text-align: center;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-container h1 {
+        font-size: 20px;
+    }
+
+    .login-container {
+        margin-top: 100px; /* Less margin for smaller screens */
+    }
+
+    .login-container input[type="text"],
+    .login-container button {
+        font-size: 14px;
+    }
+}
