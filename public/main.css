@@ -136,3 +136,127 @@ body {
 .login-container {
     margin-top: 100px; /* تأخير الحاوية لتظهر أسفل الشريط */
 }
+ .leaderboard h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr.gold {
+            background-color: #f3f0e0;
+        }
+        tr.silver {
+            background-color: #fdf5f5;
+        }
+        tr.bronze {
+            background-color: #f3efeb;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+ <!-- Leaderboard Section -->
+    <div class="leaderboard">
+        <h1>Leaderboard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Score</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <!-- Dynamic rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+   // Example leaderboard data
+        let leaderboard = [
+            { player: "Player1", score: 1000, time: "12:30 PM" },
+            { player: "Player2", score: 900, time: "12:32 PM" },
+            { player: "Player3", score: 800, time: "12:35 PM" }
+        ];
+
+        // Function to render leaderboard
+        function renderLeaderboard() {
+            const tbody = document.getElementById('leaderboard-body');
+            tbody.innerHTML = '';  // Clear current content
+
+            // Sort leaderboard by score and then by time (earlier times rank higher)
+            leaderboard.sort((a, b) => {
+                if (b.score === a.score) {
+                    return new Date(a.time) - new Date(b.time); // If scores are the same, compare times
+                }
+                return b.score - a.score; // Otherwise, compare by score
+            });
+
+            leaderboard.forEach((entry, index) => {
+                const row = document.createElement('tr');
+                if (index === 0) row.classList.add('gold');
+                else if (index === 1) row.classList.add('silver');
+                else if (index === 2) row.classList.add('bronze');
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${entry.player}</td>
+                    <td>${entry.score}</td>
+                    <td>${entry.time}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Function to update score and time for a player when they finish
+        function updateScore(player, newScore) {
+            let playerEntry = leaderboard.find(entry => entry.player === player);
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            if (playerEntry) {
+                playerEntry.score = newScore; // Update existing player's score
+                playerEntry.time = currentTime; // Update the time they finished
+            } else {
+                leaderboard.push({
+                    player: player,
+                    score: newScore,
+                    time: currentTime
+                });
+            }
+            renderLeaderboard(); // Re-render the leaderboard
+        }
+
+        // Example: Simulate players finishing
+        setTimeout(() => {
+            updateScore("Player1", 1100); // Player1 finishes with a new score
+        }, 2000);
+        setTimeout(() => {
+            updateScore("Player2", 950); // Player2 finishes with a new score
+        }, 4000);
+        setTimeout(() => {
+            updateScore("Player3", 850); // Player3 finishes with a new score
+        }, 6000);
+
+
+
