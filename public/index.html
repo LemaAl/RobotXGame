@@ -1,34 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOC<!DOCTYPE html>
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تسجيل اللاعب</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotx Game</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <div class="navbar">
-    <img src="club-logo.png" alt="لوجو النادي">
-    <div class="title">لعبة فك الشيفرة</div>
-    <img src="university-logo.png" alt="لوجو الجامعة">
-  </div>
-
-  <div class="container">
-    <h1>تسجيل الدخول</h1>
-    <input type="text" id="playerName" placeholder="أدخل اسمك...">
-    <button onclick="register()">ابدأ اللعب</button>
-  </div>
-
-  <script>
-    function register() {
-      const playerName = document.getElementById('playerName').value;
-      if (!playerName.trim()) {
-        alert('الرجاء إدخال اسمك!');
-        return;
-      }
-      localStorage.setItem('playerName', playerName);
-      window.location.href = '/game.html';
-    }
-  </script>
+    <img src="robotex_logo.jpg" alt="لوجو النادي" class="club-logo">
+    <div class="title">Robotx Game</div>
+    <img src="university_logo.jpg" alt="لوجو الجامعة" class="university-logo">
+</div>
+<div class="login-container">
+    <form onsubmit="register(); return false;">
+        <h1>Are You Readdyyy!!</h1>
+        <input type="text" id="playerName" placeholder="enter your username..." required>
+        <button type="submit">Start Game</button>
+    </form>
+</div>
+    <script>
+        function register() {
+            const playerName = document.getElementById('playerName').value;
+            if (!playerName.trim()) {
+                alert('please enter your name!');
+                return;
+            }
+            localStorage.setItem('playerName', playerName);
+            window.location.href = '/game.html';
+        }
+    </script>
 </body>
 </html>
+   
