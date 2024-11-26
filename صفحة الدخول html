@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>RobotX Game</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="navbar">
+      <img src="robotex_logo.jpg" alt="Robotex Logo" class="logo" />
+      <h1>RobotX Game</h1>
+      <img src="university_logo.png" alt="University Logo" class="logo" />
+    </header>
+    <main class="content">
+      <h2> Enter your name to start</h2>
+      <form onsubmit="submitForm(event)">
+        <input
+          type="text"
+          id="playerName"
+          placeholder="Enter your name"
+          pattern="[A-Za-z ]+"
+          title="Please enter a valid name (letters only)"
+          required
+        />
+        <button type="submit" class="btn">Start Game</button>
+      </form>
+    </main>
+    <footer class="footer">
+      <p>  2024 RobotX Club |</p>
+    </footer>
+  </div>
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      const playerName = document.getElementById("playerName").value.trim();
+      if (playerName) {
+        alert("Welcome " + playerName + "! Ready to play?");
+        window.location.href = "game.html"; // Example redirect
+      }
+    }
+  </script>
+</body>
+</html>
