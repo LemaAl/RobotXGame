@@ -65,9 +65,31 @@ const createTeamsStructure = async () => {
     }
 };
 
-// بدء اللعبة
-const startGame = () => {
-    alert("اللعبة بدأت!");
-    // هنا يمكن إضافة منطق البدء
+const startGame = async () => {
+    const gameStateRef = ref(db, "gameState");
+
+    // تحديث حالة اللعبة إلى "بدأت"
+    await update(gameStateRef, {
+        started: true,
+    });
+
+    alert("اللعبة بدأت! يتم نقل اللاعبين الآن إلى شاشة اللعبة.");
 };
+
+const monitorGameState = () => {
+    const gameStateRef = ref(db, "gameState");
+
+    // مراقبة تغييرات حالة اللعبة
+    onValue(gameStateRef, (snapshot) => {
+        const gameState = snapshot.val();
+
+        if (gameState && gameState.started) {
+            // توجيه اللاعبين إلى شاشة اللعبة
+            window.location.href = "/gameL.html";
+        }
+    });
+};
+
+// استدعاء الدالة عند تحميل الصفحة
+monitorGameState();
 
