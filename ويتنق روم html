@@ -1,0 +1,38 @@
+<div id="overlay"><h1>RobotXGame</h1></div>
+<div style="text-align: center; font-size: 14px; font-family: 'Courier New', monospace; color: #11; position: relative; top: -100px;"><h2>Game Instructions</h2>
+  <ol>
+    <li>Each team consists of 3 members.</li>
+    <li>The discussion among team members takes place in the chat room. </li>
+    <li>Good luck</li>
+  </ol>
+</div>
+               
+  </div>
+  <div style="text-align: center; font-size: 14px; font-family: 'Courier New', monospace; color: #11; position: fixed; bottom: 0; width: 100%;">
+     <p> This is the waiting room.</p>
+    <div/>
+    
+<div id="hey"><div id="layer-up"></div></div>
+<div id="layer-0">
+	
+	<div id="layer-1">
+		<div id="layer-2">
+			<div id="lines">
+				<div id="layer-corner"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="mtnZZZ"></div>
+		
+<div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 150px;">
+  <div>© CudeFusion team</div>
+  <div class="indicator">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
