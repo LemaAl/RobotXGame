@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RobotXGame - Winning Page</title>
+  <style>
+    
+    }
+    #winning-members {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    #hey {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- العناصر المدمجة -->
+ 
+<div id="hey"><div id="layer-up"></div></div>
+<div id="layer-0">
+	
+	<div id="layer-1">
+		<div id="layer-2">
+			<div id="lines">
+				<div id="layer-corner"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="mtnZZZ"></div>
+
+ 
+ 
+                 <div style="text-align: center;color: 111;"">
+                                                             <h1>RobotXGame</h1>
+  <h2>You Crushed It, Well Done!</h2>
+  <p id="winning-team">Team A</p>
+  <p id="winning-members">John, Sarah, Alex</p>
+                  
+  </div>
+  <div style="text-align: center; font-size: 14px; font-family: 'Courier New', monospace; color: 114;">
+     <p> © CudeFusion team </p>
+    <div/>
+    
+    
+  
+</body>
+</html>
