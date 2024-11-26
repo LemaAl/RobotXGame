@@ -1,0 +1,105 @@
+<div id="overlay"><h1>RobotXGame</h1></div>
+
+
+<div class="game-info">
+  <h2>رقم المرحلة 1</h2>  
+  <h3>رقم الشفرة1</h3>
+  <h4>التلميحة</h4>
+</div>
+
+<!-- بوكس الإجابة في الأعلى -->
+<div class="box" id="answer-box">
+  <textarea placeholder="اكتب إجابتك هنا..."></textarea>
+  <button>إرسال الإجابة</button>
+</div>
+
+<!-- بوكس الشات في الأسفل -->
+<div class="box" id="chat-box">
+  <!-- محتوى الشات هنا -->
+</div>
+
+
+<div id="hey"><div id="layer-up"></div></div>
+<div id="layer-0">
+	
+	<div id="layer-1">
+		<div id="layer-2">
+			<div id="lines">
+				<div id="layer-corner"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="mtnZZZ"></div>
+<style>
+  /* اللعبة الأصلية */
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #3e99d5, #13498b);
+    color: white;
+  }
+
+  .game-info {
+    position: absolute;
+    top: 90px;
+    left: 40%;
+    transform: translateX(-40%);
+    text-align: center;
+  }
+
+  .game-info h2, .game-info h3, .game-info h4 {
+    font-size: 17px;
+    margin: 5px 0;
+  }
+
+  /* تصميم البوكسات */
+  .box {
+    width: 60%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    background: linear-gradient(to right, #003366, #004080, #003366);
+    box-shadow: 0 0 5px 3px rgba(0, 51, 102, 0.8);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* بوكس الشات */
+  #chat-box {
+    height: 90px;
+    overflow-y: auto;
+  }
+
+  /* بوكس الإجابة */
+  #answer-box {
+    height: 170px;
+  }
+
+  textarea {
+    width: 80%;
+    height: 80%;
+    margin-bottom: -20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    resize: none;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    
