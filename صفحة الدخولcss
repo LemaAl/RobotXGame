@@ -231,12 +231,24 @@ h3 {
   background-color: #003d99;
 }
 
-robotex_logo,
-university_logo{
-   width: 150px;
+.navbar img{
+ width: 150px;
   margin: 10px;
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.navbar .robotex_logo{
+margin-right: 10px;
+}
+.navbar .university_logo{
+margin-left: 10px;
+}
+
+
+
+
+
+
 
 	
 	
