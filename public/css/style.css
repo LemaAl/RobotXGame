@@ -1,0 +1,146 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.screen {
+  display: none;
+}
+
+input, button {
+  margin: 10px;
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  input, button {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+.hidden {
+  display: none;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+.instructions-box {
+  background-color: #ffffff;
+  border: 2px solid #004080;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.instructions-box h2 {
+  color: #004080;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #004080;
+}
+
+.instructions-box ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.instructions-box ul li {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.game-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hint-box, .answer-box, .chat-box {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f0f8ff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.chat-box {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#chat-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#chat-message {
+  width: calc(100% - 80px);
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#chat-container {
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+}
