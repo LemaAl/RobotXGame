@@ -1,0 +1,199 @@
+Html
+  ---------------------
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توزيع اللاعبين</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="overlay">
+        <h1>RobotxGame</h1>
+    </div>
+
+    <div id="player-input">
+        <h2>أدخل اسمك</h2>
+        <input type="text" id="player-name" placeholder="اسم اللاعب">
+        <button id="add-player">إضافة اللاعب</button>
+    </div>
+
+    <div id="player-list-section">
+        <h3>قائمة اللاعبين</h3>
+        <ul id="player-list"></ul>
+        <button id="distribute-teams" disabled>توزيع اللاعبين إلى فرق</button>
+    </div>
+
+    <div id="teams-section" style="display:none;">
+        <h3>الفرق</h3>
+        <div id="team-1">
+            <h4>الفريق 1</h4>
+            <ul></ul>
+        </div>
+        <div id="team-2">
+            <h4>الفريق 2</h4>
+            <ul></ul>
+        </div>
+        <button id="start-game" style="margin-top: 20px;">بدء اللعبة</button>
+        <button id="stop-game" style="margin-top: 20px; display: none;">إيقاف اللعبة</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+  CSS
+  -------------------------------------
+  body {
+    background: radial-gradient(circle, rgba(127, 0, 173, 0.6) 0%, rgba(0, 0, 0, 1) 90%);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#overlay h1 {
+    margin-top: 20px;
+    animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+#player-input, #player-list-section, #teams-section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+button {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes neon1 {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff1177, 0 0 30px #ff1177, 0 0 40px #ff1177;
+    }
+    to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff1177, 0 0 30px #ff1177, 0 0 50px #ff1177, 0 0 60px #ff1177;
+    }
+}
+
+#start-game, #stop-game {
+    background-color: #ff5733;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#stop-game {
+    background-color: #ff3333;
+}
+
+      JS
+      ---------------------------------------------------
+      // الحصول على العناصر من الصفحة
+const playerNameInput = document.getElementById("player-name");
+const addPlayerButton = document.getElementById("add-player");
+const playerList = document.getElementById("player-list");
+const distributeTeamsButton = document.getElementById("distribute-teams");
+const teamsSection = document.getElementById("teams-section");
+const team1 = document.querySelector("#team-1 ul");
+const team2 = document.querySelector("#team-2 ul");
+const startGameButton = document.getElementById("start-game");
+const stopGameButton = document.getElementById("stop-game");
+
+// مصفوفة لتخزين أسماء اللاعبين
+let players = [];
+
+// وظيفة لإضافة لاعب إلى القائمة
+addPlayerButton.addEventListener("click", () => {
+    const playerName = playerNameInput.value.trim();
+    if (playerName) {
+        // إضافة اللاعب إلى المصفوفة
+        players.push(playerName);
+
+        // إضافة اللاعب إلى القائمة في الـ HTML
+        const listItem = document.createElement("li");
+        listItem.textContent = playerName;
+        playerList.appendChild(listItem);
+
+        // تفريغ حقل الإدخال
+        playerNameInput.value = "";
+
+        // تمكين زر توزيع الفرق إذا كان هناك أكثر من لاعب واحد
+        if (players.length > 1) {
+            distributeTeamsButton.disabled = false;
+        }
+    }
+});
+
+// وظيفة لتوزيع اللاعبين إلى فريقين
+distributeTeamsButton.addEventListener("click", () => {
+    // خلط أسماء اللاعبين عشوائيًا
+    const shuffledPlayers = players.sort(() => Math.random() - 0.5);
+
+    // تقسيم اللاعبين إلى فريقين
+    const midIndex = Math.ceil(shuffledPlayers.length / 2);
+    const team1Players = shuffledPlayers.slice(0, midIndex);
+    const team2Players = shuffledPlayers.slice(midIndex);
+
+    // عرض الفرق
+    team1.innerHTML = "";
+    team2.innerHTML = "";
+    team1Players.forEach(player => {
+        const listItem = document.createElement("li");
+        listItem.textContent = player;
+        team1.appendChild(listItem);
+    });
+    team2Players.forEach(player => {
+        const listItem = document.createElement("li");
+        listItem.textContent = player;
+        team2.appendChild(listItem);
+    });
+
+    // إظهار قسم الفرق
+    teamsSection.style.display = "block";
+});
+
+// وظيفة لبدء اللعبة
+startGameButton.addEventListener("click", () => {
+    alert("اللعبة بدأت!");
+    startGameButton.style.display = "none"; // إخفاء زر بدء اللعبة
+    stopGameButton.style.display = "inline-block"; // إظهار زر إيقاف اللعبة
+});
+
+// وظيفة لإيقاف اللعبة
+stopGameButton.addEventListener("click", () => {
+    alert("تم إيقاف اللعبة.");
+    stopGameButton.style.display = "none"; // إخفاء زر إيقاف اللعبة
+    startGameButton.style.display = "inline-block"; // إعادة إظهار زر بدء اللعبة
+});
+
+  
