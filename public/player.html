@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة اللاعب</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>الانضمام إلى اللعبة</h1>
+        <input type="text" id="playerName" placeholder="أدخل اسمك">
+        <button onclick="registerPlayer(document.getElementById('playerName').value)">الانضمام</button>
+    </div>
+
+    <div id="waiting-container" class="container hidden">
+        <h1>الرجاء الانتظار...</h1>
+        <div class="instructions-box">
+            <h2>إرشادات اللعبة:</h2>
+            <ul>
+                <li>يجب على كل لاعب التعاون مع الفريق.</li>
+                <li>الهدف هو حل الألغاز بأسرع وقت ممكن.</li>
+                <li>تأكد من تسجيل اسمك قبل بدء اللعبة.</li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/player.js" type="module"></script>
+</body>
+</html>

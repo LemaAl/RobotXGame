@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واجهة اللعبة</title>
+    <link rel="stylesheet" href="css\style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- تلميح اللاعب -->
+        <div class="hint-box">
+            <h3>التلميح الخاص بك:</h3>
+            <p id="player-hint">جارٍ تحميل التلميح...</p>
+        </div>
+
+        <!-- إدخال الإجابة -->
+        <div class="answer-box">
+            <h3>أدخل إجابتك:</h3>
+            <input type="text" id="player-answer" placeholder="أدخل الإجابة هنا...">
+            <button onclick="submitAnswer()">إرسال</button>
+        </div>
+
+        <div class="chat-box">
+          <h3>دردشة الفريق:</h3>
+          <div id="chat-container"></div>
+          <input type="text" id="chat-message" placeholder="اكتب رسالتك هنا..." />
+          <button onclick="sendMessage(teamId, playerId, document.getElementById('chat-message').value)">
+            إرسال
+          </button>
+          
+      </div>
+      
+    </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
