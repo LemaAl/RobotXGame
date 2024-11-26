@@ -3,110 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لعبة فك الشيفرة</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Team Code Solving Game</title>
+  <link rel="stylesheet" href="game.css">
 </head>
 <body>
-  <!-- شاشة التسجيل -->
-  <div id="register">
-    <h1>لعبة فك الشيفرة</h1>
-    <input type="text" id="playerName" placeholder="Enter your name">
-    <button onclick="registerPlayer()">Register</button>
-  </div>
+  <div class="navbar">
+    <img src="robotx-logo.png" alt="لوجو النادي" class="club-logo">
+    <div class="title">Robotx Game</div>
+    <img src="university_logo.png" alt="لوجو الجامعة" class="university-logo">
+  </div> 
 
-  <!-- شاشة الانتظار -->
-  <div id="waitingRoom" style="display:none;">
-    <h2>Waiting Room</h2>
-    <p id="waitingMessage">Waiting for the host to start the game...</p>
-    <div id="hostControls" style="display:none;">
-      <h3>Host Controls</h3>
-      <button onclick="startGame()">Start Game</button>
-      <p id="playerCount"></p>
+  <!-- صفحة اللاعب -->
+  <div class="game-container" id="game-container">
+    <h1>Welcome!</h1>
+    <div class="hints">
+      <div class="hint" id="player1">
+        <h2>Your Hint</h2>
+        <p>Hint for Player 1: The code is a 3-digit number.</p>
+      </div>
+      <div class="hint" id="player2">
+        <h2>Your Hint</h2>
+        <p>Hint for Player 2: The code contains a number greater than 5.</p>
+      </div>
+      <div class="hint" id="player3">
+        <h2>Your Hint</h2>
+        <p>Hint for Player 3: The code is a multiple of 3.</p>
+      </div>
     </div>
+
+    <div class="game">
+      <input type="number" id="userInput" placeholder="Enter your guess..." />
+      <button id="submitBtn">Submit Guess</button>
+      <p id="feedback"></p>
+      <p id="timer">Time: 0s</p>
+    </div>
+
+    <div class="winner" id="winner"></div>
   </div>
-
-  <!-- شاشة الفريق -->
-  <div id="teamRoom" style="display:none;">
-    <h2 id="teamName">Team Assignment</h2>
-    <p>Waiting for the next stage...</p>
-  </div>
-
-  <!-- شاشة اللعبة -->
-  <div id="gameRoom" style="display:none;">
-    <h2 id="teamTitle"></h2>
-    <h2 id="code-box">Loading Code...</h2>
-    <p id="hint-box">Hints will appear here...</p>
-    <input type="text" id="answer" placeholder="Enter your answer">
-    <button onclick="submitAnswer()">Submit Answer</button>
-  </div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io();
-
-    // تسجيل اللاعب
-    function registerPlayer() {
-      const playerName = document.getElementById('playerName').value;
-      socket.emit('registerPlayer', playerName);
-      document.getElementById('register').style.display = 'none';
-      document.getElementById('waitingRoom').style.display = 'block';
-    }
-
-    // تعيين الهوست
-    socket.on('hostAssigned', (message) => {
-      document.getElementById('hostControls').style.display = 'block';
-    });
-
-    // شاشة الانتظار
-    socket.on('waitingRoom', (message) => {
-      document.getElementById('waitingMessage').textContent = message;
-    });
-
-    // تحديث عدد اللاعبين
-    socket.on('playerCount', (count) => {
-      document.getElementById('playerCount').textContent = `Players Connected: ${count}`;
-    });
-
-    // بدء اللعبة
-    function startGame() {
-      socket.emit('startGame');
-    }
-
-    // تعيين الفريق
-    socket.on('teamAssigned', (team) => {
-      document.getElementById('waitingRoom').style.display = 'none';
-      document.getElementById('teamRoom').style.display = 'block';
-      document.getElementById('teamName').textContent = `You are in: ${team}`;
-    });
-
-    // بدء المرحلة
-    socket.on('sendCode', (data) => {
-      document.getElementById('teamRoom').style.display = 'none';
-      document.getElementById('gameRoom').style.display = 'block';
-      document.getElementById('code-box').textContent = data.code;
-      document.getElementById('hint-box').textContent = data.hints.join(', ');
-    });
-
-    // إرسال الإجابة
-    function submitAnswer() {
-      const answer = document.getElementById('answer').value;
-      const team = document.getElementById('teamName').textContent.split(': ')[1];
-      socket.emit('submitAnswer', { team, answer });
-    }
-
-    // الرد على الإجابة
-    socket.on('correctAnswer', (message) => {
-      alert(message);
-    });
-
-    socket.on('wrongAnswer', (message) => {
-      alert(message);
-    });
-
-    socket.on('gameOver', (message) => {
-      alert(message);
-      document.getElementById('gameRoom').style.display = 'none';
-    });
-  </script>
 </body>
 </html>
