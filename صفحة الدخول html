@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>RobotX Game</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="container">
-    <header class="navbar">
-      <img src="robotex_logo.jpg" alt="Robotex Logo" class="logo" />
-      <h1>RobotX Game</h1>
-      <img src="university_logo.png" alt="University Logo" class="logo" />
-    </header>
-    <main class="content">
-      <h2> Enter your name to start</h2>
-      <form onsubmit="submitForm(event)">
-        <input
-          type="text"
-          id="playerName"
-          placeholder="Enter your name"
-          pattern="[A-Za-z ]+"
-          title="Please enter a valid name (letters only)"
-          required
-        />
-        <button type="submit" class="btn">Start Game</button>
-      </form>
-    </main>
-    <footer class="footer">
-      <p>  2024 RobotX Club |</p>
-    </footer>
-  </div>
-  <script>
-    function submitForm(event) {
-      event.preventDefault();
-      const playerName = document.getElementById("playerName").value.trim();
-      if (playerName) {
-        alert("Welcome " + playerName + "! Ready to play?");
-        window.location.href = "game.html"; // Example redirect
-      }
-    }
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="home" class="flex-center flex-column">
+
+        
+      <img src="logo.png" alt="Logo" class="robotex_logo.jpg">
+
+        <img src="logo.png" alt="Logo" class="university_logo.png">
+        
+          
+
+
+
+
+<div id="overlay"><h1>RobotXGame</h1>
+	
+          <input
+            type="text"
+            id="playerName"
+            placeholder="Enter your name"
+            required
+          />
+         
+</div>
+<div id="hey"><div id="layer-up"></div></div>
+<div id="layer-0">
+	
+	<div id="layer-1">
+		<div id="layer-2">
+			<div id="lines">
+				<div id="layer-corner"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="mtnZZZ"></div>
+
+      </div>
+    </div>
+  </body>
 </html>
