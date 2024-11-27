@@ -1,0 +1,174 @@
+
+
+.stage {
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+.stage h1 {
+    color: #004080;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #004080;
+}
+
+.stage button {
+    background-color: #004080;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.stage button:hover {
+    background-color: #00264d;
+    transform: scale(1.05);
+}
+/* تصميم عام */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #b3e5fc;
+    text-align: center;
+    direction: rtl;
+}
+
+header {
+    background-color: #004080;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.logo-container .logo {
+    height: 50px;
+    width: auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.box {
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+.box h1, .box h2 {
+    color: #004080;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #004080;
+}
+
+.box form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: #f9f9f9;
+}
+
+.box button {
+    background-color: #004080;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.box button:hover {
+    background-color: #00264d;
+    transform: scale(1.05);
+}
+
+.chat-box {
+    background-color: #ffffff;
+    border: 2px solid #004080;
+    border-radius: 15px;
+    padding: 10px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.messages-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.messages-container .message {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.messages-container .message .sender {
+    font-weight: bold;
+    color: #004080;
+}
+
+.messages-container .message .text {
+    margin-top: 5px;
+}
+
+#chat-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+#chat-form button {
+    padding: 10px;
+    background-color: #004080;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#chat-form button:hover {
+    background-color: #00264d;
+}

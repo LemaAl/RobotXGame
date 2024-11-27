@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة الإدارة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #players-list {
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 50%;
+            text-align: left;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>مرحبا بك في صفحة الإدارة</h1>
+
+    <div id="controls">
+        <button id="start-game">بدء اللعبة</button>
+    </div>
+
+    <div id="players-list">
+        <h3>قائمة اللاعبين المتصلين:</h3>
+        <ul id="players">
+        </ul>
+    </div>
+
+    <script>
+        // وظيفة لجلب قائمة اللاعبين
+        async function fetchPlayers() {
+            try {
+                const response = await fetch("http://localhost:3000/players");
+                const players = await response.json();
+
+                const playersList = document.getElementById("players");
+                playersList.innerHTML = ""; // تفريغ القائمة القديمة
+
+                players.forEach(player => {
+                    const li = document.createElement("li");
+                    li.textContent = player.name;
+                    playersList.appendChild(li);
+                });
+            } catch (error) {
+                console.error("حدث خطأ أثناء جلب قائمة اللاعبين:", error);
+            }
+        }
+
+        // وظيفة لبدء اللعبة
+        async function startGame() {
+            try {
+                const response = await fetch("http://localhost:3000/game/start", {
+                    method: "POST",
+                });
+
+                if (!response.ok) {
+                    throw new Error("فشل في بدء اللعبة");
+                }
+
+                const result = await response.json();
+                alert(result.message); // عرض رسالة نجاح
+
+                // الانتقال إلى صفحة اللعبة
+                window.location.href = "game.html";
+            } catch (error) {
+                console.error(error);
+                alert("حدث خطأ أثناء بدء اللعبة.");
+            }
+        }
+
+        // إضافة مستمع الحدث للزر
+        document.getElementById("start-game").addEventListener("click", startGame);
+
+        // تحديث قائمة اللاعبين كل 5 ثوانٍ
+        setInterval(fetchPlayers, 5000);
+        fetchPlayers();
+    </script>
+</body>
+</html>

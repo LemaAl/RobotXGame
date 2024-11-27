@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شاشة الفوز</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 15px auto;
+            width: 60%;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>تهانينا للفريق الفائز!</h1>
+
+    <div class="container">
+        <!-- بوكس الفريق الفائز -->
+        <div class="box">
+            <h2>الفريق الفائز:</h2>
+            <p id="winning-team">...</p>
+            <h3>أعضاء الفريق:</h3>
+            <ul id="winning-members">
+                <!-- أسماء أعضاء الفريق -->
+            </ul>
+        </div>
+
+        <!-- جدول الفرق الأخرى -->
+        <div class="box">
+            <h2>ترتيب الفرق:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الترتيب</th>
+                        <th>اسم الفريق</th>
+                        <th>المرحلة</th>
+                        <th>أعضاء الفريق</th>
+                    </tr>
+                </thead>
+                <tbody id="teams-table">
+                    <!-- يتم تعبئة الفرق هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        async function fetchWinData() {
+            try {
+                const response = await fetch("http://localhost:3000/game/win");
+                if (!response.ok) {
+                    throw new Error("فشل في جلب بيانات الفوز.");
+                }
+
+                const data = await response.json();
+
+                // عرض الفريق الفائز
+                document.getElementById("winning-team").textContent = data.winningTeam;
+
+                const winningMembers = document.getElementById("winning-members");
+                data.result
+                    .find(team => team.teamName === data.winningTeam)
+                    .members.forEach(member => {
+                        const li = document.createElement("li");
+                        li.textContent = member;
+                        winningMembers.appendChild(li);
+                    });
+
+                // عرض ترتيب الفرق
+                const teamsTable = document.getElementById("teams-table");
+                data.result.forEach((team, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${team.teamName}</td>
+                        <td>${team.stage}</td>
+                        <td>${team.members.join(", ")}</td>
+                    `;
+                    teamsTable.appendChild(row);
+                });
+            } catch (error) {
+                console.error("حدث خطأ أثناء جلب بيانات الفوز:", error);
+            }
+        }
+
+        // جلب بيانات الفوز عند تحميل الصفحة
+        fetchWinData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الشفرات</title>
+    <style>body {
+        background: radial-gradient(circle, rgba(127, 0, 173, 0.6) 0%, rgba(0, 0, 0, 1) 90%);
+        color: rgb(0, 0, 0);
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #overlay h1 {
+        margin-top: 20px;
+        animation: neon1 1.5s ease-in-out infinite alternate;
+    }
+    
+    #player-input, #player-list-section, #teams-section {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 500px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    button {
+        background-color: #6c63ff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    
+    button:disabled {
+        background-color: grey;
+        cursor: not-allowed;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    li {
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    @keyframes neon1 {
+        from {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff1177, 0 0 30px #ff1177, 0 0 40px #ff1177;
+        }
+        to {
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff1177, 0 0 30px #ff1177, 0 0 50px #ff1177, 0 0 60px #ff1177;
+        }
+    }
+    
+    
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .box {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: calc(100% - 20px);
+        }
+        button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>لعبة الشفرات</h1>
+    <div class="container">
+        <!-- رقم الشفرة -->
+        <div class="box">
+            <h3>الشفرة رقم:</h3>
+            <p id="code-number">...</p>
+        </div>
+
+        <!-- التلميحات -->
+        <div class="box">
+            <h3>التلميحات:</h3>
+            <ul id="hints-list">
+                <li>...</li>
+            </ul>
+        </div>
+
+        <!-- حقل الإجابة -->
+        <div class="box">
+            <h3>الإجابة:</h3>
+            <input type="text" id="answer-input" placeholder="أدخل الإجابة هنا">
+            <button id="submit-answer">إرسال</button>
+        </div>
+
+        <!-- رسالة النتيجة -->
+        <p id="result-message" style="color: green; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        async function fetchCodeAndHints() {
+    try {
+        const response = await fetch("http://localhost:3000/game/code");
+        const data = await response.json();
+
+        document.getElementById("code-number").textContent = data.codeNumber;
+        const hintsList = document.getElementById("hints-list");
+        hintsList.innerHTML = ""; // تفريغ التلميحات القديمة
+        data.hints.forEach(hint => {
+            const li = document.createElement("li");
+            li.textContent = hint;
+            hintsList.appendChild(li);
+        });
+    } catch (error) {
+        console.error("حدث خطأ أثناء جلب الشفرة والتلميحات:", error);
+    }
+}
+
+document.getElementById("submit-answer").addEventListener("click", async () => {
+    const answer = document.getElementById("answer-input").value.trim();
+
+    try {
+        const response = await fetch("http://localhost:3000/game/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ answer }),
+        });
+
+        const result = await response.json();
+
+        if (result.correct) {
+            alert(result.message); // عرض رسالة النجاح
+
+            if (result.isGameOver) {
+                window.location.href = "win.html"; // الانتقال إلى صفحة الفوز إذا انتهت اللعبة
+            } else {
+                fetchCodeAndHints(); // جلب الشفرة التالية
+            }
+        } else {
+            alert(result.message); // عرض رسالة الخطأ
+        }
+    } catch (error) {
+        console.error("حدث خطأ أثناء إرسال الإجابة:", error);
+    }
+});
+
+        fetchCodeAndHints();
+    </script>
+</body>
+</html>
